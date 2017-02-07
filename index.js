@@ -16,10 +16,10 @@ exports.register = function (server, options, next) {
         if (fragment) {
             const cachedHTML = crawlCache['/?' + fragment];
             if (cachedHTML) {
-                server.log(['spa', 'cache', 'success'], fragment);
+                server.log(['info', 'spa', 'cache', 'success'], fragment);
                 reply(cachedHTML);
             } else {
-                server.log(['spa', 'cache', 'failed'], fragment);
+                server.log(['error', 'spa', 'cache', 'failed'], fragment);
                 return reply.continue();
             }
         } else {
