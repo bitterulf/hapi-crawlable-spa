@@ -5,9 +5,9 @@ const crawlJob = require('simple-spa-crawler').crawlJob;
 
 exports.register = function (server, options, next) {
     var crawlCache = {};
-
-    crawlJob(options.uri || server.info.uri, options.cronTime, options.wait, function (err, result) {
-        server.log(['spa', 'crawlJob', 'finished'], _.keys(result));
+    const uri = options.uri || server.info.uri;
+    crawlJob(uri, options.cronTime, options.wait, function (err, result) {
+        server.log(['spa', 'crawlJob', 'finished'], {uri: uri, keys: _.keys(result)});
         crawlCache = result;
     });
 
