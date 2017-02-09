@@ -28,12 +28,11 @@ exports.register = function (server, options, next) {
             const cachedHTML = crawlCache['/?' + cacheKey];
             if (cachedHTML) {
                 server.log(['info', 'spa', 'cache', 'success'], cacheKey);
-                reply(cachedHTML);
+                return reply(cachedHTML);
             } else {
                 server.log(['error', 'spa', 'cache', 'failed'], cacheKey);
                 return reply.continue();
             }
-            reply(cacheKey);
         }
     });
 
