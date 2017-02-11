@@ -13,8 +13,13 @@ exports.register = function (server, options, next) {
 
     server.ext('onRequest', function (request, reply) {
         const fragment = request.query._escaped_fragment_;
-        if (fragment) {
-            request.setUrl('/cache'+fragment);
+        if (typeof fragment !== 'undefined') {
+            if (fragment) {
+                request.setUrl('/cache'+fragment);
+            }
+            else {
+                request.setUrl('/cache/');
+            }
         }
 
         return reply.continue();
