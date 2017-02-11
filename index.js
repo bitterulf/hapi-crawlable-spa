@@ -25,7 +25,7 @@ exports.register = function (server, options, next) {
         path: '/cache/{fragment*}',
         handler: function (request, reply) {
             const cacheKey = '/'+request.params.fragment
-            const cachedHTML = crawlCache['/?' + cacheKey];
+            const cachedHTML = crawlCache['/#!' + cacheKey];
             if (cachedHTML) {
                 server.log(['info', 'spa', 'cache', 'success'], cacheKey);
                 return reply(cachedHTML);
