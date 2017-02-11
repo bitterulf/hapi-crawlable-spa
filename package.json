@@ -18,6 +18,6 @@
   "homepage": "https://github.com/bitterulf/hapi-crawlable-spa#readme",
   "dependencies": {
     "lodash": "^4.17.4",
-    "simple-spa-crawler": "^1.0.0"
+    "simple-spa-crawler": "^2.0.0"
   }
 }
