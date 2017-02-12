@@ -41,6 +41,18 @@ exports.register = function (server, options, next) {
         }
     });
 
+    server.route({
+        method: 'GET',
+        path: '/sitemap.txt',
+        handler: function (request, reply) {
+            reply(
+                _.keys(crawlCache)
+                .map(function(key) { return '/#!' + key; })
+                .join('\r\n')
+            );
+        }
+    });
+
     next();
 };
 
