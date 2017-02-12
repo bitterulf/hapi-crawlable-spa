@@ -53,6 +53,20 @@ exports.register = function (server, options, next) {
         }
     });
 
+    server.route({
+        method: 'GET',
+        path: '/robots.txt',
+        handler: function (request, reply) {
+            reply(
+                ([
+                    'User-Agent: *',
+                    'Disallow:',
+                    'Sitemap: '+uri+'/sitemap.txt'
+                ]).join('\r\n')
+            ).type('text/plain');
+        }
+    });
+
     next();
 };
 
