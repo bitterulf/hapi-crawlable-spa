@@ -47,6 +47,7 @@ exports.register = function (server, options, next) {
         handler: function (request, reply) {
             reply(
                 _.keys(crawlCache)
+                .map(function(key) { return uri + key; })
                 .join('\r\n')
             ).type('text/plain');
         }
